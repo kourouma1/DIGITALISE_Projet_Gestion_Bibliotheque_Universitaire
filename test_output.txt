@@ -1,0 +1,975 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.example:gestionBiliotheque >-------------------
+[INFO] Building gestionBiliotheque 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gestionBiliotheque ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ gestionBiliotheque ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gestionBiliotheque ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ gestionBiliotheque ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ gestionBiliotheque ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest
+21:05:02.521 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest]: EmpruntControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:05:02.646 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.gestionBiliotheque.GestionBiliothequeApplication for test class com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest
+21:05:02.760 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-12-04T21:05:02.989Z  INFO 100070 --- [gestionBiliotheque-test] [           main] c.e.g.e.EmpruntControllerIntegrationTest : Starting EmpruntControllerIntegrationTest using Java 21.0.9-ea with PID 100070 (started by iniesta in /home/iniesta/Bureau/ETI_Backend/gestionBiliotheque)
+2025-12-04T21:05:02.990Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] c.e.g.e.EmpruntControllerIntegrationTest : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-04T21:05:02.990Z  INFO 100070 --- [gestionBiliotheque-test] [           main] c.e.g.e.EmpruntControllerIntegrationTest : The following 1 profile is active: "test"
+2025-12-04T21:05:03.584Z  INFO 100070 --- [gestionBiliotheque-test] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-04T21:05:03.634Z  INFO 100070 --- [gestionBiliotheque-test] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 4 JPA repository interfaces.
+2025-12-04T21:05:04.211Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-12-04T21:05:04.222Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-04T21:05:04.222Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-04T21:05:04.291Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-04T21:05:04.292Z  INFO 100070 --- [gestionBiliotheque-test] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1284 ms
+2025-12-04T21:05:04.427Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-04T21:05:04.465Z  INFO 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-04T21:05:04.490Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-04T21:05:04.640Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-04T21:05:04.659Z  INFO 100070 --- [gestionBiliotheque-test] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-04T21:05:04.815Z  INFO 100070 --- [gestionBiliotheque-test] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-12-04T21:05:04.817Z  INFO 100070 --- [gestionBiliotheque-test] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-04T21:05:04.834Z  WARN 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-04T21:05:05.545Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-04T21:05:05.554Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    drop table if exists emprunts cascade 
+2025-12-04T21:05:05.557Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    drop table if exists livres cascade 
+2025-12-04T21:05:05.558Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    drop table if exists reservations cascade 
+2025-12-04T21:05:05.558Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    drop table if exists utilisateurs cascade 
+2025-12-04T21:05:05.562Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    create table emprunts (
+        penalite numeric(38,2),
+        date_emprunt timestamp(6) not null,
+        date_retour_effective timestamp(6),
+        date_retour_prevue timestamp(6) not null,
+        id bigint generated by default as identity,
+        livre_id bigint not null,
+        utilisateur_id bigint not null,
+        statut varchar(255) not null check (statut in ('EN_COURS','TERMINE','EN_RETARD')),
+        primary key (id)
+    )
+2025-12-04T21:05:05.571Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    create table livres (
+        date_publication date,
+        disponibles integer not null,
+        nombre_exemplaires integer not null,
+        id bigint generated by default as identity,
+        isbn varchar(17) not null unique,
+        categorie varchar(50),
+        auteur varchar(100) not null,
+        titre varchar(200) not null,
+        primary key (id)
+    )
+2025-12-04T21:05:05.574Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    create table reservations (
+        date_expiration timestamp(6) not null,
+        date_reservation timestamp(6) not null,
+        id bigint generated by default as identity,
+        livre_id bigint not null,
+        utilisateur_id bigint not null,
+        statut varchar(255) not null check (statut in ('EN_ATTENTE','VALIDEE','ANNULEE')),
+        primary key (id)
+    )
+2025-12-04T21:05:05.575Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    create table utilisateurs (
+        actif boolean not null,
+        date_inscription timestamp(6),
+        id bigint generated by default as identity,
+        matricule varchar(20) not null unique,
+        nom varchar(50) not null,
+        prenom varchar(50) not null,
+        email varchar(100) not null unique,
+        mot_de_passe varchar(255) not null,
+        role varchar(255) not null check (role in ('ADMIN','USER','MANAGER')),
+        primary key (id)
+    )
+2025-12-04T21:05:05.577Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    alter table if exists emprunts 
+       add constraint FK57rm7d75bto0x8yxmrfvjnydw 
+       foreign key (livre_id) 
+       references livres
+2025-12-04T21:05:05.584Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    alter table if exists emprunts 
+       add constraint FKd5i4kghuhrwdm3mhtn9iben5b 
+       foreign key (utilisateur_id) 
+       references utilisateurs
+2025-12-04T21:05:05.586Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    alter table if exists reservations 
+       add constraint FKr65l7sfy4p6dwm2bdm1006n95 
+       foreign key (livre_id) 
+       references livres
+2025-12-04T21:05:05.587Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    alter table if exists reservations 
+       add constraint FK5jh2b3gs43v5mdq0ocumvv34p 
+       foreign key (utilisateur_id) 
+       references utilisateurs
+2025-12-04T21:05:05.590Z  INFO 100070 --- [gestionBiliotheque-test] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-04T21:05:05.872Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] c.e.g.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-04T21:05:05.969Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-04T21:05:06.615Z  WARN 100070 --- [gestionBiliotheque-test] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-04T21:05:06.858Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@75952723, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@510ee215, org.springframework.security.web.context.SecurityContextHolderFilter@f0a6b04, org.springframework.security.web.header.HeaderWriterFilter@26b3eb48, org.springframework.web.filter.CorsFilter@474c8d42, org.springframework.security.web.authentication.logout.LogoutFilter@bba6542, com.example.gestionBiliotheque.security.JwtAuthenticationFilter@59301546, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a1f4fa4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a271f3b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fc2e0b7, org.springframework.security.web.session.SessionManagementFilter@4f34f451, org.springframework.security.web.access.ExceptionTranslationFilter@1e512b3, org.springframework.security.web.access.intercept.AuthorizationFilter@679864e0]
+2025-12-04T21:05:07.065Z  INFO 100070 --- [gestionBiliotheque-test] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 45371 (http) with context path ''
+2025-12-04T21:05:07.075Z  INFO 100070 --- [gestionBiliotheque-test] [           main] c.e.g.e.EmpruntControllerIntegrationTest : Started EmpruntControllerIntegrationTest in 4.324 seconds (process running for 5.246)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/iniesta/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2025-12-04T21:05:07.545Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:07.565Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:07.567Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:07.664Z  INFO 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-04T21:05:07.664Z  INFO 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-04T21:05:07.665Z  INFO 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-04T21:05:07.672Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:07.677Z  WARN 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/auth/register' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-04T21:05:07.687Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:07.687Z  WARN 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/auth/register' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-04T21:05:07.689Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:07.817Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:07.821Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:07.949Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.053Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.055Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.057Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.060Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.060Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.061Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.064Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-2] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.066Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-2] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.143Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-2] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.151Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.153Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.154Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.157Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.157Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.158Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.160Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-3] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.161Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-3] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.234Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.243Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.244Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.246Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.249Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.249Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.249Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.252Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-4] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.254Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-4] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.342Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-4] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.352Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.354Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.358Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.361Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.362Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.362Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.365Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-5] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.366Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-5] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.438Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.448Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.450Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.451Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.454Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.454Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.454Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.456Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-6] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.458Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-6] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.528Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-6] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.537Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.539Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.540Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.542Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.542Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.542Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.544Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-7] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.546Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-7] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.616Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-7] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.624Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.625Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.627Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.629Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.629Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.630Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.632Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-8] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.633Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-8] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.705Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-8] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.714Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.715Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.717Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.719Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.719Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.719Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.721Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-9] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.722Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-9] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.794Z DEBUG 100070 --- [gestionBiliotheque-test] [o-auto-1-exec-9] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2025-12-04T21:05:08.801Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        em1_0.id,
+        em1_0.date_emprunt,
+        em1_0.date_retour_effective,
+        em1_0.date_retour_prevue,
+        em1_0.livre_id,
+        em1_0.penalite,
+        em1_0.statut,
+        em1_0.utilisateur_id 
+    from
+        emprunts em1_0
+2025-12-04T21:05:08.803Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        lm1_0.id,
+        lm1_0.auteur,
+        lm1_0.categorie,
+        lm1_0.date_publication,
+        lm1_0.disponibles,
+        lm1_0.isbn,
+        lm1_0.nombre_exemplaires,
+        lm1_0.titre 
+    from
+        livres lm1_0
+2025-12-04T21:05:08.804Z DEBUG 100070 --- [gestionBiliotheque-test] [           main] org.hibernate.SQL                        : 
+    select
+        um1_0.id,
+        um1_0.actif,
+        um1_0.date_inscription,
+        um1_0.email,
+        um1_0.matricule,
+        um1_0.mot_de_passe,
+        um1_0.nom,
+        um1_0.prenom,
+        um1_0.role 
+    from
+        utilisateurs um1_0
+2025-12-04T21:05:08.806Z DEBUG 100070 --- [gestionBiliotheque-test] [-auto-1-exec-10] o.s.security.web.FilterChainProxy        : Securing POST /auth/register
+2025-12-04T21:05:08.807Z DEBUG 100070 --- [gestionBiliotheque-test] [-auto-1-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-04T21:05:08.807Z DEBUG 100070 --- [gestionBiliotheque-test] [-auto-1-exec-10] o.s.security.web.FilterChainProxy        : Secured POST /auth/register
+2025-12-04T21:05:08.810Z DEBUG 100070 --- [gestionBiliotheque-test] [-auto-1-exec-10] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.email=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.812Z DEBUG 100070 --- [gestionBiliotheque-test] [-auto-1-exec-10] org.hibernate.SQL                        : 
+    select
+        um1_0.id 
+    from
+        utilisateurs um1_0 
+    where
+        um1_0.matricule=? 
+    fetch
+        first ? rows only
+2025-12-04T21:05:08.885Z DEBUG 100070 --- [gestionBiliotheque-test] [-auto-1-exec-10] org.hibernate.SQL                        : 
+    insert 
+    into
+        utilisateurs
+        (actif, date_inscription, email, matricule, mot_de_passe, nom, prenom, role, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 6.522 s <<< FAILURE! -- in com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testGetEmpruntsEnRetard -- Time elapsed: 0.964 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testCreateEmpruntBookNotAvailable -- Time elapsed: 0.099 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testCreateEmpruntLimitExceeded -- Time elapsed: 0.090 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testManagerCanBorrow5Books -- Time elapsed: 0.108 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testCreateEmpruntSuccess -- Time elapsed: 0.093 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testCreateEmpruntBlockedByPenalties -- Time elapsed: 0.088 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testGetMesEmprunts -- Time elapsed: 0.087 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testReturnLivreOnTime -- Time elapsed: 0.088 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testGetEmpruntsEnRetardForbiddenForUser -- Time elapsed: 0.086 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.testReturnLivreLateWithPenalty -- Time elapsed: 0.091 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at com.example.gestionBiliotheque.emprunt.EmpruntControllerIntegrationTest.setUp(EmpruntControllerIntegrationTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[ERROR]   EmpruntControllerIntegrationTest.setUp:72 
+expected: 201 CREATED
+ but was: 500 INTERNAL_SERVER_ERROR
+[INFO] 
+[ERROR] Tests run: 10, Failures: 10, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.397 s
+[INFO] Finished at: 2025-12-04T21:05:09Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project gestionBiliotheque: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/iniesta/Bureau/ETI_Backend/gestionBiliotheque/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
