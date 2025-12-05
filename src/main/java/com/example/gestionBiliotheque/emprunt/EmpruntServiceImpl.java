@@ -6,6 +6,7 @@ import com.example.gestionBiliotheque.exception.*;
 import com.example.gestionBiliotheque.livres.LivreModel;
 import com.example.gestionBiliotheque.livres.LivreRepository;
 import com.example.gestionBiliotheque.livres.dto.LivreSimpleDTO;
+import com.example.gestionBiliotheque.notification.NotificationService;
 import com.example.gestionBiliotheque.reservations.ReservationModel;
 import com.example.gestionBiliotheque.reservations.ReservationRepository;
 import com.example.gestionBiliotheque.reservations.StatutReservation;
@@ -13,6 +14,8 @@ import com.example.gestionBiliotheque.utilisateurs.Role;
 import com.example.gestionBiliotheque.utilisateurs.UtilisateurModel;
 import com.example.gestionBiliotheque.utilisateurs.UtilisateurRepository;
 import com.example.gestionBiliotheque.utilisateurs.dto.UtilisateurSimpleDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +34,8 @@ import java.util.List;
 @Transactional
 public class EmpruntServiceImpl implements EmpruntService {
 
+    private static final Logger logger = LoggerFactory.getLogger(EmpruntServiceImpl.class);
+
     @Autowired
     private EmpruntRepository empruntRepository;
 
@@ -42,6 +47,9 @@ public class EmpruntServiceImpl implements EmpruntService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Override
     public EmpruntDTO createEmprunt(CreateEmpruntDTO createEmpruntDTO) {
@@ -144,6 +152,15 @@ public class EmpruntServiceImpl implements EmpruntService {
             ReservationModel firstReservation = pendingReservations.get(0);
             firstReservation.setStatut(StatutReservation.VALIDEE);
             reservationRepository.save(firstReservation);
+            
+            // Envoyer une notification à l'utilisateur
+            try {
+                notificationService.sendReservationAvailableNotification(firstReservation);
+                logger.info("Notification de disponibilité envoyée pour la réservation ID: {}", firstReservation.getId());
+            } catch (Exception e) {
+                logger.error("Erreur lors de l'envoi de la notification de disponibilité", e);
+                // Ne pas bloquer le processus de retour si la notification échoue
+            }
         }
 
         // 9. Sauvegarder l'emprunt

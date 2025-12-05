@@ -55,4 +55,10 @@ public interface EmpruntRepository extends JpaRepository<EmpruntModel, Long> {
      */
     @Query("SELECT e FROM EmpruntModel e WHERE e.dateRetourPrevue < :now AND e.statut = 'EN_COURS'")
     List<EmpruntModel> findLoansToMarkAsOverdue(@Param("now") LocalDateTime now);
+
+    /**
+     * Trouve les emprunts qui doivent être retournés dans les 24 prochaines heures
+     */
+    @Query("SELECT e FROM EmpruntModel e WHERE e.dateRetourPrevue BETWEEN :start AND :end AND e.statut = 'EN_COURS'")
+    List<EmpruntModel> findLoansDueIn24Hours(@Param("start") LocalDateTime start, @Param("end") LocalDateTime end);
 }
