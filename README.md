@@ -30,7 +30,7 @@ Application Spring Boot pour la gestion complète d'une bibliothèque universita
 
 - ✅ **Gestion des Utilisateurs**
   - Inscription et authentification (JWT)
-  - Rôles : ETUDIANT, ENSEIGNANT, BIBLIOTHECAIRE, ADMIN
+  - Rôles : ETUDIANT, BIBLIOTHECAIRE, ADMIN
   - Profils utilisateurs avec matricule
 
 - ✅ **Gestion des Livres**
