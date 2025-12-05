@@ -17,8 +17,6 @@ public class CreateEmpruntDTO {
     @NotNull(message = "L'ID du livre est obligatoire")
     private Long livreId;
 
-    @NotNull(message = "La date de retour prévue est obligatoire")
-    @Future(message = "La date de retour prévue doit être dans le futur")
     private LocalDateTime dateRetourPrevue;
 
     // Constructeurs

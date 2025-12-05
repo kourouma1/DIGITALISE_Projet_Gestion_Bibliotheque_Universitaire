@@ -14,6 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
@@ -27,6 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Tests d'intégration pour la gestion des réservations
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 @DisplayName("Tests de Gestion des Réservations")
 class ReservationControllerIntegrationTest {
@@ -70,8 +72,8 @@ class ReservationControllerIntegrationTest {
         userToken = userResult.getBody().get("token").asText();
         userModel = utilisateurRepository.findByEmail("user@test.com").orElseThrow();
 
-        // Créer un livre non disponible
-        unavailableLivre = createTestLivre("9781234567890", "Unavailable Book", 0);
+        // Créer un livre non disponible (1 exemplaire total, 0 disponible)
+        unavailableLivre = createTestLivre("9781234567890", "Unavailable Book", 1, 0);
     }
 
     @Test
@@ -97,7 +99,7 @@ class ReservationControllerIntegrationTest {
     @Test
     @DisplayName("Réservation échoue si livre disponible")
     void testCreateReservationFailsIfBookAvailable() {
-        LivreModel availableLivre = createTestLivre("9780987654321", "Available Book", 5);
+        LivreModel availableLivre = createTestLivre("9780987654321", "Available Book", 5, 5);
 
         CreateReservationDTO createDTO = new CreateReservationDTO();
         createDTO.setUtilisateurId(userModel.getId());
@@ -109,7 +111,7 @@ class ReservationControllerIntegrationTest {
 
         ResponseEntity<JsonNode> response = restTemplate.postForEntity("/reservations", request, JsonNode.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         assertThat(response.getBody().get("message").asText()).isEqualTo(
                 "Le livre est actuellement disponible. Vous pouvez l'emprunter directement sans réservation.");
     }
@@ -168,7 +170,7 @@ class ReservationControllerIntegrationTest {
     @DisplayName("Récupération des réservations de l'utilisateur")
     void testGetMesReservations() {
         createTestReservation(userModel, unavailableLivre);
-        LivreModel anotherLivre = createTestLivre("9780000000000", "Another Book", 0);
+        LivreModel anotherLivre = createTestLivre("9780000000000", "Another Book", 1, 0);
         createTestReservation(userModel, anotherLivre);
 
         HttpHeaders headers = new HttpHeaders();
@@ -195,20 +197,124 @@ class ReservationControllerIntegrationTest {
         reservation.setDateExpiration(LocalDateTime.now().minusHours(1)); // Expirée
         reservationRepository.save(reservation);
 
-        // Appeler le service de nettoyage
-        // Note: Ce test nécessiterait l'injection du service ou un test unitaire séparé
-        // Pour l'instant, vérifier que la réservation existe
+        // Vérifier que la réservation existe et est expirée
         assertThat(reservationRepository.findById(reservation.getId())).isPresent();
+        assertThat(reservation.getDateExpiration()).isBefore(LocalDateTime.now());
     }
 
-    private LivreModel createTestLivre(String isbn, String titre, int disponibles) {
+    @Test
+    @DisplayName("Réservation échoue avec livre inexistant")
+    void testCreateReservationWithNonExistentBook() {
+        CreateReservationDTO createDTO = new CreateReservationDTO();
+        createDTO.setUtilisateurId(userModel.getId());
+        createDTO.setLivreId(99999L); // ID inexistant
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(userToken);
+        HttpEntity<CreateReservationDTO> request = new HttpEntity<>(createDTO, headers);
+
+        ResponseEntity<JsonNode> response = restTemplate.postForEntity("/reservations", request, JsonNode.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().get("message").asText()).contains("Livre non trouvé");
+    }
+
+    @Test
+    @DisplayName("Réservation échoue avec utilisateur inexistant")
+    void testCreateReservationWithNonExistentUser() {
+        CreateReservationDTO createDTO = new CreateReservationDTO();
+        createDTO.setUtilisateurId(99999L); // ID inexistant
+        createDTO.setLivreId(unavailableLivre.getId());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(userToken);
+        HttpEntity<CreateReservationDTO> request = new HttpEntity<>(createDTO, headers);
+
+        ResponseEntity<JsonNode> response = restTemplate.postForEntity("/reservations", request, JsonNode.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().get("message").asText()).contains("Utilisateur non trouvé");
+    }
+
+    @Test
+    @DisplayName("Annulation échoue pour réservation d'un autre utilisateur")
+    void testCancelReservationUnauthorized() {
+        // Créer un deuxième utilisateur
+        RegisterRequestDTO user2Request = new RegisterRequestDTO();
+        user2Request.setMatricule("USR002");
+        user2Request.setNom("User2");
+        user2Request.setPrenom("Test2");
+        user2Request.setEmail("user2@test.com");
+        user2Request.setMotDePasse("user123");
+        user2Request.setRole(Role.ETUDIANT);
+
+        ResponseEntity<JsonNode> user2Result = restTemplate.postForEntity("/auth/register", user2Request, JsonNode.class);
+        String user2Token = user2Result.getBody().get("token").asText();
+
+        // Créer une réservation pour user1
+        ReservationModel reservation = createTestReservation(userModel, unavailableLivre);
+
+        // Tenter d'annuler avec user2
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(user2Token);
+        HttpEntity<Void> request = new HttpEntity<>(headers);
+
+        ResponseEntity<JsonNode> response = restTemplate.exchange(
+                "/reservations/" + reservation.getId(),
+                HttpMethod.DELETE,
+                request,
+                JsonNode.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+        assertThat(response.getBody().get("message").asText())
+                .contains("Vous ne pouvez annuler que vos propres réservations");
+    }
+
+    @Test
+    @DisplayName("Réservation échoue sans authentification")
+    void testCreateReservationWithoutAuth() {
+        CreateReservationDTO createDTO = new CreateReservationDTO();
+        createDTO.setUtilisateurId(userModel.getId());
+        createDTO.setLivreId(unavailableLivre.getId());
+
+        // Pas de token d'authentification
+        ResponseEntity<JsonNode> response = restTemplate.postForEntity("/reservations", createDTO, JsonNode.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+    }
+
+    @Test
+    @DisplayName("Vérification de la date d'expiration (48h)")
+    void testReservationExpirationDate() {
+        CreateReservationDTO createDTO = new CreateReservationDTO();
+        createDTO.setUtilisateurId(userModel.getId());
+        createDTO.setLivreId(unavailableLivre.getId());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(userToken);
+        HttpEntity<CreateReservationDTO> request = new HttpEntity<>(createDTO, headers);
+
+        ResponseEntity<JsonNode> response = restTemplate.postForEntity("/reservations", request, JsonNode.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        
+        // Récupérer la réservation créée
+        Long reservationId = response.getBody().get("id").asLong();
+        ReservationModel reservation = reservationRepository.findById(reservationId).orElseThrow();
+
+        // Vérifier que l'expiration est bien à 48h
+        LocalDateTime expectedExpiration = reservation.getDateReservation().plusHours(48);
+        assertThat(reservation.getDateExpiration()).isEqualToIgnoringSeconds(expectedExpiration);
+    }
+
+    private LivreModel createTestLivre(String isbn, String titre, int total, int disponibles) {
         LivreModel livre = new LivreModel();
         livre.setIsbn(isbn);
         livre.setTitre(titre);
         livre.setAuteur("Test Author");
         livre.setCategorie("Test Category");
         livre.setDatePublication(LocalDate.now());
-        livre.setNombreExemplaires(disponibles);
+        livre.setNombreExemplaires(total);
         livre.setDisponibles(disponibles);
         return livreRepository.save(livre);
     }

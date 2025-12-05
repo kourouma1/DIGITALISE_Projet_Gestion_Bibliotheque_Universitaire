@@ -17,8 +17,6 @@ public class CreateReservationDTO {
     @NotNull(message = "L'ID du livre est obligatoire")
     private Long livreId;
 
-    @NotNull(message = "La date d'expiration est obligatoire")
-    @Future(message = "La date d'expiration doit être dans le futur")
     private LocalDateTime dateExpiration;
 
     // Constructeurs

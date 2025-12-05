@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -28,6 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Tests d'intégration pour la gestion des emprunts
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 @DisplayName("Tests de Gestion des Emprunts")
 class EmpruntControllerIntegrationTest {
@@ -40,6 +42,9 @@ class EmpruntControllerIntegrationTest {
 
     @Autowired
     private EmpruntRepository empruntRepository;
+
+    @Autowired
+    private com.example.gestionBiliotheque.reservations.ReservationRepository reservationRepository;
 
     @Autowired
     private LivreRepository livreRepository;
@@ -55,6 +60,7 @@ class EmpruntControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
+        reservationRepository.deleteAll();
         empruntRepository.deleteAll();
         livreRepository.deleteAll();
         utilisateurRepository.deleteAll();
@@ -121,7 +127,7 @@ class EmpruntControllerIntegrationTest {
     void testCreateEmpruntLimitExceeded() {
         // Créer 3 emprunts pour l'utilisateur
         for (int i = 0; i < 3; i++) {
-            LivreModel livre = createTestLivre("978123456789" + i, "Book " + i, 5);
+            LivreModel livre = createTestLivre("978222222222" + i, "Book " + i, 5);
             createTestEmprunt(userModel, livre);
         }
 
@@ -147,7 +153,7 @@ class EmpruntControllerIntegrationTest {
     void testManagerCanBorrow5Books() {
         // Créer 5 emprunts pour le manager
         for (int i = 0; i < 5; i++) {
-            LivreModel livre = createTestLivre("978123456789" + i, "Book " + i, 5);
+            LivreModel livre = createTestLivre("978333333333" + i, "Book " + i, 5);
             CreateEmpruntDTO createDTO = new CreateEmpruntDTO();
             createDTO.setUtilisateurId(managerModel.getId());
             createDTO.setLivreId(livre.getId());
@@ -168,7 +174,7 @@ class EmpruntControllerIntegrationTest {
     @Test
     @DisplayName("Emprunt échoue si livre non disponible - crée réservation")
     void testCreateEmpruntBookNotAvailable() {
-        LivreModel unavailableLivre = createTestLivre("9780000000000", "Unavailable Book", 0);
+        LivreModel unavailableLivre = createTestLivre("9780000000000", "Unavailable Book", 1, 0);
 
         CreateEmpruntDTO createDTO = new CreateEmpruntDTO();
         createDTO.setUtilisateurId(userModel.getId());
@@ -320,16 +326,20 @@ class EmpruntControllerIntegrationTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
     }
 
-    private LivreModel createTestLivre(String isbn, String titre, int disponibles) {
+    private LivreModel createTestLivre(String isbn, String titre, int total, int disponibles) {
         LivreModel livre = new LivreModel();
         livre.setIsbn(isbn);
         livre.setTitre(titre);
         livre.setAuteur("Test Author");
         livre.setCategorie("Test Category");
         livre.setDatePublication(LocalDate.now());
-        livre.setNombreExemplaires(disponibles);
+        livre.setNombreExemplaires(total);
         livre.setDisponibles(disponibles);
         return livreRepository.save(livre);
+    }
+
+    private LivreModel createTestLivre(String isbn, String titre, int disponibles) {
+        return createTestLivre(isbn, titre, disponibles, disponibles);
     }
 
     private EmpruntModel createTestEmprunt(UtilisateurModel utilisateur, LivreModel livre) {

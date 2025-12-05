@@ -84,7 +84,7 @@ public class EmpruntController {
      * Récupère tous les emprunts en retard (ADMIN/MANAGER only)
      */
     @GetMapping("/en-retard")
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'BIBLIOTHECAIRE')")
     public ResponseEntity<Page<EmpruntDTO>> getEmpruntsEnRetard(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
